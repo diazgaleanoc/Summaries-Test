@@ -6,12 +6,16 @@ import { Book } from '../interfaces/book';
   providedIn: 'root',
 })
 export class BookDataService {
-  url = 'https://localhost:7169/api/Books/GetBooks';
   _baseURL: string = 'https://localhost:7169/api/Books';
+  //_baseURL: string = "api/Books";
+  //_baseURL: string = window.location.origin + '/api/Books';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    //this.url = window.
+  }
 
   getAllBooks() {
+    console.log(this._baseURL + 'GetBooks');
     return this.http.get<Book[]>(this._baseURL + '/GetBooks');
   }
 
